@@ -28,7 +28,7 @@ public class EpidemieService {
     
             // Traitement du fichier audio
             if (audioFile != null) {
-                String audioLocation = "C:var/www/html/devoir/audios";
+                String audioLocation = "C:\\xampp\\htdocs\\keneyaDeme\\audios";
                 try {
                     Path audioRootLocation = Paths.get(audioLocation);
                     if (!Files.exists(audioRootLocation)) {
@@ -38,7 +38,7 @@ public class EpidemieService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    epidemie.setAudio("http://localhost/devoir/audios/" + audioName);
+                    epidemie.setAudio("http://localhost/keneyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }
@@ -96,12 +96,12 @@ public Epidemies updateEpidemie(Long id, Epidemies epidemie, MultipartFile audio
     
         // Mettre à jour l'audio si fourni
         if (audioFile != null) {
-            String emplacementAudio = "/var/www/html/devoir/audios";
+            String emplacementAudio = "C:\\xampp\\htdocs\\keneyaDeme\\audios";
             String nomAudio = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
             Path cheminAudio = Paths.get(emplacementAudio).resolve(nomAudio);
 
             Files.copy(audioFile.getInputStream(), cheminAudio, StandardCopyOption.REPLACE_EXISTING);
-            epidemieExistante.setAudio("http://localhost/devoir/audios/" + nomAudio);
+            epidemieExistante.setAudio("http://localhost/keneyaDeme/audios/" + nomAudio);
         }
 
         // Enregistrer la maladie mise à jour

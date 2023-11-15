@@ -27,7 +27,7 @@ public class TraitementService {
         if (traitementRepository.findByNom(traitement.getNom()) == null) {
             // Traitement du fichier image
             if (imageFile != null) {
-                String imageLocation = "var/www/html/devoir/images";
+                String imageLocation = "C:\\xampp\\htdocs\\keneyaDeme\\images";
                 try {
                     Path imageRootLocation = Paths.get(imageLocation);
                     if (!Files.exists(imageRootLocation)) {
@@ -37,7 +37,7 @@ public class TraitementService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    traitement.setImage("http://localhost/devoir/images/" + imageName);
+                    traitement.setImage("http://localhost/keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
@@ -45,7 +45,7 @@ public class TraitementService {
 
             // Traitement du fichier audio
             if (audioFile != null) {
-                String audioLocation = "var/www/html/devoir/audios";
+                String audioLocation = "C:\\xampp\\htdocs\\keneyaDeme\\audios";
                 try {
                     Path audioRootLocation = Paths.get(audioLocation);
                     if (!Files.exists(audioRootLocation)) {
@@ -55,7 +55,7 @@ public class TraitementService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    traitement.setAudio("http://localhost/devoir/audios/" + audioName);
+                    traitement.setAudio("http://localhost/kenyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }

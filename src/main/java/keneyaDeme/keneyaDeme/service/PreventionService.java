@@ -27,7 +27,7 @@ public class PreventionService {
     
             // Traitement du fichier image
             if (imageFile != null) {
-                String imageLocation = "/var/www/html/devoir/images";
+                String imageLocation = "C:\\xampp\\htdocs\\keneyaDeme\\images";
                 try {
                     Path imageRootLocation = Paths.get(imageLocation);
                     if (!Files.exists(imageRootLocation)) {
@@ -37,7 +37,7 @@ public class PreventionService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    prevention.setImage("http://localhost/devoir/images/" + imageName);
+                    prevention.setImage("http://localhost/keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
@@ -45,7 +45,7 @@ public class PreventionService {
     
             // Traitement du fichier audio
             if (audioFile != null) {
-                String audioLocation = "var/www/html/devoir/audios";
+                String audioLocation = "C:\\xampp\\htdocs\\keneyaDeme\\audios";
                 try {
                     Path audioRootLocation = Paths.get(audioLocation);
                     if (!Files.exists(audioRootLocation)) {
@@ -55,7 +55,7 @@ public class PreventionService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    prevention.setAudio("http://localhost/devoir/audios/" + audioName);
+                    prevention.setAudio("http://localhost/keneyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }

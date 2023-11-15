@@ -30,7 +30,7 @@ public class MaladieService {
     
             // Traitement du fichier image
             if (imageFile != null) {
-                String imageLocation = "/var/www/html/devoir/images";
+                String imageLocation = "C:\\xampp\\htdocs\\keneyaDeme\\images";
                 try {
                     Path imageRootLocation = Paths.get(imageLocation);
                     if (!Files.exists(imageRootLocation)) {
@@ -48,7 +48,7 @@ public class MaladieService {
     
             // Traitement du fichier audio
             if (audioFile != null) {
-                String audioLocation = "/var/www/html/devoir/audios";
+                String audioLocation = "C:\\xampp\\htdocs\\keneyaDeme\\audios";
                 try {
                     Path audioRootLocation = Paths.get(audioLocation);
                     if (!Files.exists(audioRootLocation)) {

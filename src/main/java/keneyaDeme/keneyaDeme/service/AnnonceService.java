@@ -27,7 +27,7 @@ public class AnnonceService {
     
             // Traitement du fichier image
             if (imageFile != null) {
-                String imageLocation = "var/www/html/devoir/images";
+                String imageLocation = "C:\\xampp\\\\htdocs\\keneyaDeme\\images";
                 try {
                     Path imageRootLocation = Paths.get(imageLocation);
                     if (!Files.exists(imageRootLocation)) {
@@ -37,7 +37,7 @@ public class AnnonceService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    annonce.setImage("http://localhost/devoir/images/" + imageName);
+                    annonce.setImage("http://localhost/keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
