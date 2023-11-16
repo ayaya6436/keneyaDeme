@@ -37,7 +37,7 @@ public class AnnonceService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    annonce.setImage("http://localhost/keneyaDeme/images/" + imageName);
+                    annonce.setImage("http://10.175.48.169/keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
@@ -90,7 +90,7 @@ public class AnnonceService {
                 Path cheminImage = Paths.get(emplacementImage).resolve(nomImage);
 
                 Files.copy(imageFile.getInputStream(), cheminImage, StandardCopyOption.REPLACE_EXISTING);
-                annonceExistante.setImage("http://localhost/keneyaDeme/images/" + nomImage);
+                annonceExistante.setImage("http://10.175.48.169/keneyaDeme/images/" + nomImage);
             }
 
             // Enregistrer la maladie mise à jour

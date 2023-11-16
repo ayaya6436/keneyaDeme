@@ -37,7 +37,7 @@ public class PreventionService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    prevention.setImage("http://localhost/keneyaDeme/images/" + imageName);
+                    prevention.setImage("http://10.175.48.169/keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
@@ -55,7 +55,7 @@ public class PreventionService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    prevention.setAudio("http://localhost/keneyaDeme/audios/" + audioName);
+                    prevention.setAudio("http://10.175.48.169/keneyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }
@@ -107,7 +107,7 @@ public class PreventionService {
                 Path cheminImage = Paths.get(emplacementImage).resolve(nomImage);
 
                 Files.copy(imageFile.getInputStream(), cheminImage, StandardCopyOption.REPLACE_EXISTING);
-                preventionExistante.setImage("http://localhost/keneyaDeme/images/" + nomImage);
+                preventionExistante.setImage("http://10.175.48.169/keneyaDeme/images/" + nomImage);
             }
 
             // Mettre à jour l'audio si fourni
@@ -117,7 +117,7 @@ public class PreventionService {
                 Path cheminAudio = Paths.get(emplacementAudio).resolve(nomAudio);
 
                 Files.copy(audioFile.getInputStream(), cheminAudio, StandardCopyOption.REPLACE_EXISTING);
-                preventionExistante.setAudio("http://localhost/keneyaDeme/audios/" + nomAudio);
+                preventionExistante.setAudio("http://10.175.48.169/keneyaDeme/audios/" + nomAudio);
             }
 
             // Enregistrer la maladie mise à jour
