@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.util.List;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import keneyaDeme.keneyaDeme.model.Preventions;
 import keneyaDeme.keneyaDeme.model.Traitements;
 import keneyaDeme.keneyaDeme.service.TraitementService;
 import lombok.AllArgsConstructor;
@@ -58,6 +59,13 @@ public class TraitementController {
 
 
     
+
+    @GetMapping("/traitements/maladie/{id}")
+    @Operation(summary = "Récupérer toutes les traitemennts pour une maladie spécifique par son ID")
+    public List<Traitements> getPreventionsByMaladieId(@Valid @PathVariable Long id) {
+        return traitementService.getPreventionsByMaladiesId(id);
+    }
+
      @GetMapping("/traitements")
     @Operation(summary = "Afficher la liste des methodes de traitements")
     public List<Traitements> readAll() {

@@ -23,6 +23,7 @@ import jakarta.validation.Valid;
 import keneyaDeme.keneyaDeme.model.Preventions;
 import keneyaDeme.keneyaDeme.service.PreventionService;
 import lombok.AllArgsConstructor;
+import net.bytebuddy.dynamic.DynamicType.Builder.FieldDefinition.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -54,6 +55,12 @@ public class PreventionController {
         Preventions savedPreventions = preventionService.createPrevention(prevention, imageFile, audioFile);
 
         return new ResponseEntity<>(savedPreventions, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/preventions/maladie/{id}")
+    @Operation(summary = "Récupérer toutes les préventions pour une maladie spécifique par son ID")
+    public List<Preventions> getPreventionsByMaladieId(@Valid @PathVariable Long id) {
+        return preventionService.getPreventionsByMaladiesId(id);
     }
 
 
