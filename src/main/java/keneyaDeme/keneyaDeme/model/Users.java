@@ -64,8 +64,8 @@ public class Users {
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<Annonces> annonces;
 
-    @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
-    private List<Cas> cas;
+    // @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
+    // private List<Cas> cas;
 
   
 }
