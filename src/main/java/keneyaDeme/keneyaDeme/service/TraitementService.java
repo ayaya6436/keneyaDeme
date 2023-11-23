@@ -42,7 +42,7 @@ public class TraitementService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    traitement.setImage("http://10.175.48.17/keneyaDeme/images/" + imageName);
+                    traitement.setImage("keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
@@ -60,7 +60,7 @@ public class TraitementService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    traitement.setAudio("http://10.175.48.17/kenyaDeme/audios/" + audioName);
+                    traitement.setAudio("kenyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }
@@ -112,7 +112,7 @@ public class TraitementService {
                 Path cheminImage = Paths.get(emplacementImage).resolve(nomImage);
 
                 Files.copy(imageFile.getInputStream(), cheminImage, StandardCopyOption.REPLACE_EXISTING);
-                traitementExistante.setImage("http://10.175.48.17/keneyaDeme/images/" + nomImage);
+                traitementExistante.setImage("keneyaDeme/images/" + nomImage);
             }
 
             // Mettre à jour l'audio si fourni
@@ -122,7 +122,7 @@ public class TraitementService {
                 Path cheminAudio = Paths.get(emplacementAudio).resolve(nomAudio);
 
                 Files.copy(audioFile.getInputStream(), cheminAudio, StandardCopyOption.REPLACE_EXISTING);
-                traitementExistante.setAudio("http://10.175.48.17/keneyaDeme/audios/" + nomAudio);
+                traitementExistante.setAudio("keneyaDeme/audios/" + nomAudio);
             }
 
             // Enregistrer la maladie mise à jour

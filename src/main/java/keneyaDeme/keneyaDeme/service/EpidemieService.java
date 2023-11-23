@@ -38,7 +38,7 @@ public class EpidemieService {
                     String audioName = UUID.randomUUID().toString() + "_" + audioFile.getOriginalFilename();
                     Path audioPath = audioRootLocation.resolve(audioName);
                     Files.copy(audioFile.getInputStream(), audioPath, StandardCopyOption.REPLACE_EXISTING);
-                    epidemie.setAudio("http://10.175.48.17/keneyaDeme/audios/" + audioName);
+                    epidemie.setAudio("keneyaDeme/audios/" + audioName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier audio : " + e.getMessage());
                 }
@@ -101,7 +101,7 @@ public Epidemies updateEpidemie(Long id, Epidemies epidemie, MultipartFile audio
             Path cheminAudio = Paths.get(emplacementAudio).resolve(nomAudio);
 
             Files.copy(audioFile.getInputStream(), cheminAudio, StandardCopyOption.REPLACE_EXISTING);
-            epidemieExistante.setAudio("http://10.175.48.17/keneyaDeme/audios/" + nomAudio);
+            epidemieExistante.setAudio("keneyaDeme/audios/" + nomAudio);
         }
 
         // Enregistrer la maladie mise à jour

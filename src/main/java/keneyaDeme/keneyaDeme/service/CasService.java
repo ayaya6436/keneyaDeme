@@ -43,13 +43,13 @@ public class CasService {
                     String imageName = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                     Path imagePath = imageRootLocation.resolve(imageName);
                     Files.copy(imageFile.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
-                    cas.setImage("cas/" + imageName);
+                    cas.setImage("keneyaDeme/images/" + imageName);
                 } catch (IOException e) {
                     throw new Exception("Erreur lors du traitement du fichier image : " + e.getMessage());
                 }
             }
     
-            sendEmailToUsers("Alerte!!!!!!!!!!!!!!!", "Un nouveau cas a été declaree. Consultez-le sur notre plateforme.");
+            sendEmailToUsers("Alerte!!!!!!!!!!!!!!!", "Un nouveau cas de maladie a été declaree. Consultez-le sur notre plateforme.");
 
             return casRepository.save(cas);
         
@@ -112,9 +112,8 @@ public class CasService {
                 String emplacementImage = "C:\\xampp\\htdocs\\keneyaDeme\\images";
                 String nomImage = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
                 Path cheminImage = Paths.get(emplacementImage).resolve(nomImage);
-
                 Files.copy(imageFile.getInputStream(), cheminImage, StandardCopyOption.REPLACE_EXISTING);
-                casExistante.setImage("http://10.175.48.17/keneyaDeme/images/" + nomImage);
+                casExistante.setImage("images/" + nomImage);
             }
 
             // Enregistrer la maladie mise à jour
