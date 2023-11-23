@@ -3,7 +3,7 @@ package keneyaDeme.keneyaDeme.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import keneyaDeme.keneyaDeme.model.Preventions;
+
 import keneyaDeme.keneyaDeme.model.Traitements;
 import keneyaDeme.keneyaDeme.repository.TraitementRepository;
 import lombok.AllArgsConstructor;

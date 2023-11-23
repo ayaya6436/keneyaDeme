@@ -1,5 +1,9 @@
 package keneyaDeme.keneyaDeme.repository;
 
-public class CasRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import keneyaDeme.keneyaDeme.model.Cas;
+
+public interface CasRepository extends JpaRepository<Cas,Long>{
     
 }

@@ -72,6 +72,7 @@ public class EpidemieController {
     public Epidemies read(@Valid @PathVariable Long id) {
         return epidemieService.readById(id);
     }
+    
 @PutMapping("/epidemie/{id}")
     @Operation(summary = "Mise à jour d'une epidemie par son Id ")
     public ResponseEntity<Epidemies> updateMaladie(

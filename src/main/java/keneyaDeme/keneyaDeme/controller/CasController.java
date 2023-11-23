@@ -21,8 +21,10 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import keneyaDeme.keneyaDeme.model.Annonces;
-import keneyaDeme.keneyaDeme.service.AnnonceService;
+
+import keneyaDeme.keneyaDeme.model.Cas;
+
+import keneyaDeme.keneyaDeme.service.CasService;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -32,68 +34,74 @@ import lombok.AllArgsConstructor;
 
 @Valid
 @Validated
-public class AnnonceController {
-     private final AnnonceService annonceService;
+public class CasController {
+    private final CasService casService;
 
-    @PostMapping("/annonce")
-    @Operation(summary = "Création d'une annonce")
-    public ResponseEntity<Annonces> createAnnonce(
-            @Valid @RequestParam("annonces") String annonceString,
+    @PostMapping("/cas")
+    @Operation(summary = "Création d'un cas")
+    public ResponseEntity<Cas> createCas(
+            @Valid @RequestParam("cas") String casString,
             @RequestParam(value = "image", required = false) MultipartFile imageFile)
             throws Exception {
 
-        Annonces annonce = new Annonces();
+        Cas cas = new Cas();
         try {
-            annonce = new JsonMapper().readValue(annonceString, Annonces.class);
+            cas = new JsonMapper().readValue(casString, Cas.class);
         } catch (JsonProcessingException e) {
             throw new Exception(e.getMessage());
         }
 
-        Annonces savedAnnonces = annonceService.createAnnonce(annonce, imageFile);
+        Cas savedCas = casService.createCas(cas, imageFile);
 
-        return new ResponseEntity<>(savedAnnonces, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedCas, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/cas/count") 
+    @Operation(summary = "Afficher le nombre de cas")
+    public long getNumberOfCas() {
+        return casService.getNumberOfCas();
+    }
+    @GetMapping("/cas")
+    @Operation(summary = "Afficher la liste des cas")
+    public List<Cas> readAll() {
+        return casService.readAll();
+    }
+
+    @GetMapping("/cas/{id}")
+    @Operation(summary = "Récupère un cas par ID")
+    public Cas read(@Valid @PathVariable Long id) {
+        return casService.readById(id);
     }
 
 
-     @GetMapping("/annonces")
-    @Operation(summary = "Afficher la liste des annonces")
-    public List<Annonces> readAll() {
-        return annonceService.readAll();
-    }
-
-    @GetMapping("/annonce/{id}")
-    @Operation(summary = "Récupère une annonce par ID")
-    public Annonces read(@Valid @PathVariable Long id) {
-        return annonceService.readById(id);
-    }
 
 
-    @PutMapping("/annonce/{id}")
-    @Operation(summary = "Mise à jour d'une annonce par son Id ")
-    public ResponseEntity<Annonces> updateMaladie(
+    @PutMapping("/cas/{id}")
+    @Operation(summary = "Mise à jour d'un cas par son Id ")
+    public ResponseEntity<Cas> updateCas(
             @PathVariable Long id,
-            @Valid @RequestParam("annonces") String annonceString,
+            @Valid @RequestParam("cas") String casString,
             @RequestParam(value = "image", required = false) MultipartFile imageFile) {
-        Annonces annonceMiseAJour = new Annonces();
+        Cas casMiseAJour = new Cas();
         try {
-            annonceMiseAJour = new JsonMapper().readValue(annonceString, Annonces.class);
+            casMiseAJour = new JsonMapper().readValue(casString, Cas.class);
         } catch (JsonProcessingException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
         try {
-            Annonces annonceMiseAJournee = annonceService.updateAnnonce(id, annonceMiseAJour, imageFile);
-            return new ResponseEntity<>(annonceMiseAJournee, HttpStatus.OK);
+            Cas casMiseAJournee = casService.updateCas(id, casMiseAJour, imageFile);
+            return new ResponseEntity<>(casMiseAJournee, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
-    @DeleteMapping("/annonce/{id}")
-    @Operation(summary = "Supprimer une annonce par son ID")
+    @DeleteMapping("/cas/{id}")
+    @Operation(summary = "Supprimer un cas par son ID")
     public String delete(@Valid @PathVariable Long id) {
-        return annonceService.supprimer(id);
+        return casService.supprimer(id);
     }
 
 }

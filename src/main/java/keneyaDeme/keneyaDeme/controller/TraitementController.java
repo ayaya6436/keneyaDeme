@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import java.util.List;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import keneyaDeme.keneyaDeme.model.Preventions;
+
 import keneyaDeme.keneyaDeme.model.Traitements;
 import keneyaDeme.keneyaDeme.service.TraitementService;
 import lombok.AllArgsConstructor;

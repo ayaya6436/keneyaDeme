@@ -27,7 +27,7 @@ public class AnnonceService {
     
             // Traitement du fichier image
             if (imageFile != null) {
-                String imageLocation = "C:\\xampp\\\\htdocs\\keneyaDeme\\images";
+                String imageLocation = "C:\\xampp\\htdocs\\keneyaDeme\\images";
                 try {
                     Path imageRootLocation = Paths.get(imageLocation);
                     if (!Files.exists(imageRootLocation)) {
