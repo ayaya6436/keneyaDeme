@@ -49,7 +49,7 @@ public class CasService {
                 }
             }
     
-            sendEmailToUsers("Alerte!!!!!!!!!!!!!!!", "Un nouveau cas de maladie a été declaree. Consultez-le sur notre plateforme.");
+            sendEmailToUsers("Alerte!!!!!!!!!!!!!!!", "Un nouveau cas de maladie a été declaree. Consultez-le sur notre plateforme http://localhost:4200/.");
 
             return casRepository.save(cas);
         
