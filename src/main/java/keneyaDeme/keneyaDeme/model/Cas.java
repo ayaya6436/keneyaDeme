@@ -22,6 +22,9 @@ public class Cas {
     private Long id;
 
     private String image;
+    private String numero;
+
+
 
     @CreationTimestamp 
     private Date date;
