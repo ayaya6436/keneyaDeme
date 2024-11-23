@@ -40,7 +40,7 @@ public class UserController {
     @Operation(summary = "Creer un nouveau user")
     public Users create(@Valid @RequestBody Users user) {
        return userService.createUser(user);
-    
+
     }
 
     @GetMapping("/users")
@@ -68,12 +68,12 @@ public class UserController {
         return userService.supprimer(id);
     }
 
-    @PostMapping("/login")
+   /* @PostMapping("/login")
     @Operation(summary = "Connexion d'un utilisateur")
     public Object connexion(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
         String password = requestBody.get("password");
         return userService.connexion(email, password);
     }
-    
+    */
 }

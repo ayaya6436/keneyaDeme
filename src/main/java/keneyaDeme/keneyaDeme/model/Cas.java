@@ -24,8 +24,6 @@ public class Cas {
     private String image;
     private String numero;
 
-
-
     @CreationTimestamp 
     private Date date;
 

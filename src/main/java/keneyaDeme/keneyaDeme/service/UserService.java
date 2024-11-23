@@ -1,9 +1,12 @@
 package keneyaDeme.keneyaDeme.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
@@ -15,6 +18,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+
 
     public Users createUser(Users user) {
         if(userRepository.findByEmail(user.getEmail())==null){
@@ -40,10 +44,10 @@ public class UserService {
 
     public Users readById(Long id) {
     return userRepository.findById(id).orElseThrow(() -> new RuntimeException("users non trouvé !"));
-       
+
     }
-    
-   
+
+
     public Users modifier(Long id, Users user) {
         Optional<Users> existingUser = userRepository.findById(id);
         if (existingUser.isPresent()) {
@@ -54,7 +58,7 @@ public class UserService {
             updatedUser.setPassword(user.getPassword());
             return userRepository.save(updatedUser);
         } else {
-            
+
              throw new NoSuchElementException("Utilisateur non trouvé avec l'ID : " + id);
         }
     }
@@ -66,21 +70,21 @@ public class UserService {
             userRepository.deleteById(id);
             return "Utilisateur supprimé avec succès.";
         } else {
-          
+
             return "Utilisateur non trouvé.";
         }
     }
 
 
-    public Object connexion(String email, String password) {
+   /* public Object connexion(String email, String password) {
         Users user = userRepository.findByEmailAndPassword(email, password);
         if (user == null) {
-           
+
             return "Connexion réussie.";
         } else {
-           
+
             return user;
         }
-    }
+    }*/
 
 }

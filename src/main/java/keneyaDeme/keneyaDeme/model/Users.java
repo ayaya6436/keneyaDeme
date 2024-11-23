@@ -31,7 +31,7 @@ import lombok.Data;
     "cas",
 })
 public class Users {
-    
+
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
@@ -56,7 +56,7 @@ public class Users {
 
     @Column(length=250)
     private String password;
- 
+
 // un user peut ajouter un ou plusieurs maladies, annonces,accepter un cas,epidemies et zones
     @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     private List<Maladies> maladies;
@@ -67,7 +67,17 @@ public class Users {
     // @OneToMany(mappedBy = "users",cascade = CascadeType.ALL)
     // private List<Cas> cas;
 
-  
+
+  public Users(String email, String password) {
+    this.email = email;
+    this.password = password;
+  }
+
+  public Users() {
+
+  }
+
+
 }
 
 
